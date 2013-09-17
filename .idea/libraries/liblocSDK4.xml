@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="liblocSDK4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Wanshangle/libs/liblocSDK4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

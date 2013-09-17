@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wanshangle</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="activity_main_bar">Bar</string>
+    <string name="activity_main_movie">Movies</string>
+    <string name="activity_main_ktv">KTV</string>
+    <string name="activity_main_show">Show</string>
+
+    <string name="title_activity_ciname_managment">CinameManagment</string>
+    <string name="title_activity_ktvs_managment">KTVsManagment</string>
+
+    <string name="action_relocate">Locate</string>
+    <string name="title_activity_feed_back">FeedBackActivity</string>
+
+
+
+
+    <!--PreferencesActivity -->
+    <string name="pref_order_switch">OrderSaved</string>
+    <string name="pref_order_switch_key">pref_save_order</string>
+    <string name="pref_empty_cache_key">pref_empty_cache_value</string>
+    <string name="pref_share_key">pref_share_value</string>
+    <string name="pref_feedback_key">pref_feedback_value</string>
+    <string name="pref_check_for_updates_key">pref_check_for_updates_value</string>
+
+    <string name="activity_feedback_hint">It is my pleasure to listen to your advise.</string>
+    <string name="pref_favorites_managment">FavoritesManagment</string>
+    <string name="pref_ktvs_managment">KTV Managment</string>
+    <string name="pref_cinemas_managment">Cinema Managment</string>
+    <string name="pref_order_config">Pref_order</string>
+    <string name="pref_version_config">Versions</string>
+
+    <string name="pref_share">ShareWithFriends</string>
+    <string name="pref_empty_cache">Empty Cache</string>
+    <string name="pref_check_for_updates">Check For Updates</string>
+    <string name="pref_feedback">Feedback</string>
+    <string name="action_send">Send</string>
+    <!--PreferencesActivity -->
+
+
+</resources>

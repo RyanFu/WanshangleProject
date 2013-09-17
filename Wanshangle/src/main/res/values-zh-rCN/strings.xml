@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="activity_main_bar">酒吧</string>
+    <string name="activity_main_movie">电影</string>
+    <string name="activity_main_ktv">KTV</string>
+    <string name="activity_main_show">演出</string>
+
+
+    <string name="activity_feedback_hint">您可以告诉我们您对产品的意见或者建议，您还可以告诉我们您喜欢或者不喜欢哪个功能</string>
+
+
+
+    <!--PreferencesActivity -->
+    <string name="pref_order_switch">保存筛选、排序条件</string>
+    <string name="pref_favorites_managment">常去管理</string>
+    <string name="pref_ktvs_managment">管理常去KTV</string>
+    <string name="pref_cinemas_managment">管理常去影院</string>
+    <string name="pref_order_config">保存筛选、排序条件</string>
+    <string name="pref_version_config">版本管理</string>
+
+    <string name="pref_share">分享给好友</string>
+    <string name="pref_empty_cache">清空缓存</string>
+    <string name="pref_check_for_updates">版本更新</string>
+    <string name="pref_feedback">意见反馈</string>
+    <string name="action_send">发送</string>
+    <!--PreferencesActivity -->
+
+
+</resources>

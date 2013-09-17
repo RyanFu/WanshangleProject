@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+            android:title="11"
+            >
+        <Preference
+                android:title="@string/pref_cinemas_managment">
+            <intent
+                    android:action="com.wanshangle.ui.preferences.Pref_Cinames_Managment"
+                    />
+        </Preference>
+        <Preference
+                android:title="@string/pref_ktvs_managment">
+            <intent
+                    android:action="com.wanshangle.ui.preferences.Pref_Ktvs_Managment" />
+        </Preference>
+
+
+
+    </PreferenceCategory>
+    <PreferenceCategory
+            android:title="22">
+        <SwitchPreference
+                android:title="@string/pref_order_switch"
+                android:defaultValue="true"
+                android:key="@string/pref_order_switch_key" />
+        <Preference
+                android:key="@string/pref_empty_cache_key"
+                android:title="@string/pref_empty_cache"
+                android:summary="2.3M"
+                />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="33">
+        <Preference
+                android:title="@string/pref_share"
+                android:key="@string/pref_share_key"/>
+        <Preference
+                android:title="@string/pref_feedback"
+                android:key="@string/pref_feedback_key"
+                >
+            <intent
+                    android:action="com.wanshangle.ui.preferences.Pref_Feedback"/>
+        </Preference>
+        <Preference
+                android:title="@string/pref_check_for_updates"
+                android:key="@string/pref_check_for_updates_key"
+                android:summary="v1.0"
+                />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
