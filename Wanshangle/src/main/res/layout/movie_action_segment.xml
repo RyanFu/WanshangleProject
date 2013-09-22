@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RadioGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:id="@+id/movie_action_segment"
+    android:orientation="horizontal"
+    android:background="@drawable/round_rect_blue_r5_s1"
+    android:checkedButton="@android:id/button1"
+    >
+    <RadioButton
+        android:id="@android:id/button1"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="60dip"
+        android:gravity="center"
+        android:button="@null"
+        android:background="@drawable/movie_action_segment_item_bg"
+        android:text="@string/movie_action_segment_search"
+        />
+    <RadioButton
+        android:id="@android:id/button2"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="60dip"
+        android:gravity="center"
+        android:button="@null"
+        android:background="@drawable/movie_action_segment_item_bg"
+        android:text="@string/movie_action_segment_list"
+        />
+</RadioGroup>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="right"
+    >
+
+        <Button
+            android:id="@+id/fragment_movie_search_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="@string/fragment_movie_search_more"
+            />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:text="@string/fragment_movie_search_movies"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <android.support.v4.view.ViewPager
+            android:layout_height="234dp"
+            android:layout_width="178dp"
+            android:id="@+id/fragment_movie_search_paper"/>
+
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:text="@string/fragment_movie_search_cinemas"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/fragment_movie_search_favorites"/>
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/fragment_movie_search_nearby"/>
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/fragment_movie_search_choose"/>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center">
+        <Button
+            android:id="@+id/fragment_movie_search_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fragment_movie_search_search"
+            />
+        </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>

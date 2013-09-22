@@ -3,21 +3,17 @@ package com.wanshangle.ui;
 
 
 import android.app.ActionBar;
-import android.content.Context;
-import android.graphics.Color;
 import android.os.*;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
 import com.wanshangle.R;
 import com.wanshangle.api.ApiFault;
 import com.wanshangle.api.OnApiCompleteListener;
@@ -25,10 +21,12 @@ import com.wanshangle.api.request.BaseResponse;
 import com.wanshangle.base.BaseActivity;
 import com.wanshangle.main.LocationInfo;
 import com.wanshangle.main.WSLApplication;
+import com.wanshangle.ui.bar.BarActivity;
+import com.wanshangle.ui.ktv.KtvActivity;
+import com.wanshangle.ui.movie.MovieActivity;
 import com.wanshangle.ui.preferences.PrefsActivity;
-import com.wanshangle.utils.LocationUtils;
+import com.wanshangle.ui.show.ShowActivity;
 import com.wanshangle.utils.LogUtils;
-import com.wanshangle.utils.NetUtils;
 
 import java.util.List;
 import java.util.Timer;
@@ -39,6 +37,7 @@ public class MainActivity extends BaseActivity implements OnApiCompleteListener,
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private ArrayAdapter mSpinnerAdapter;
+    private boolean hasResgisterListener = false;
 
 
     @Override
@@ -48,12 +47,13 @@ public class MainActivity extends BaseActivity implements OnApiCompleteListener,
 
 
         initActionBar();
+
     }
 
     private void initActionBar() {
         // init ActionBar Spinner Adapter
-        mSpinnerAdapter =  ArrayAdapter.createFromResource(this, R.array.support_cities_array, R.layout.action_lcoation_list_item_1);
-        mSpinnerAdapter.setDropDownViewResource(R.layout.action_locate_list_item_checked);
+        mSpinnerAdapter =  ArrayAdapter.createFromResource(this, R.array.support_cities_array, R.layout.main_action_lcoation_list_item_1);
+        mSpinnerAdapter.setDropDownViewResource(R.layout.main_action_locate_list_item_checked);
 
         // Hides the title
         getActionBar().setDisplayShowTitleEnabled(true);
@@ -65,8 +65,6 @@ public class MainActivity extends BaseActivity implements OnApiCompleteListener,
         getActionBar().setDisplayShowHomeEnabled(true);
         //
         getActionBar().setDisplayUseLogoEnabled(false);
-        //
-//        getActionBar().setSelectedNavigationItem(2);
 
     }
 
@@ -89,66 +87,67 @@ public class MainActivity extends BaseActivity implements OnApiCompleteListener,
                 return true;
             case R.id.action_locate:
 
-                ProgressBar mProgress = new ProgressBar(this);
-                mProgress.setScrollBarStyle(android.R.attr.progressBarStyleSmall);
-                LinearLayout linearLayout = new LinearLayout(this);
-                linearLayout.setPadding(18, 18, 18, 18);
-                linearLayout.addView(mProgress, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-                item.setActionView(linearLayout);
+                ProgressBar mProgress = (ProgressBar)View.inflate(this, R.layout.main_action_locate_progress, null);
+                item.setActionView(mProgress);
+                final MenuItem locateItem = item;
+                LocationClient mLocClient = ((WSLApplication) getApplication()).getLocationClient();
+
+                // This Block need just execute once.
+                if (!hasResgisterListener)
+                {
+                    mLocClient.registerLocationListener(new BDLocationListener() {
+                        @Override
+                        public void onReceiveLocation(BDLocation bdLocation) {
+                            LogUtils.d(TAG, "onReceiveLocation()");
+                            LogUtils.d(TAG, "ErrorCode = " + (bdLocation != null ? bdLocation.getLocType() : -1));
+                            locateItem.setActionView(null);
+                            locateItem.setIcon(android.R.drawable.ic_menu_mylocation);
+
+                        }
+
+                        @Override
+                        public void onReceivePoi(BDLocation bdLocation) {
+
+                        }
+                    });
+                    hasResgisterListener = true;
+                }
+
+                if (mLocClient.isStarted())
+                {
+                    mLocClient.requestLocation();
+                }
+                else
+                {
+                    mLocClient.start();
+                    mLocClient.requestLocation();
+                }
+
+
         }
         return super.onMenuItemSelected(featureId, item);
     }
 
-    //demo method
-    public void showTitle(View view)
-    {
-        int change = getActionBar().getDisplayOptions() ^ ActionBar.DISPLAY_SHOW_TITLE;
-        getActionBar().setDisplayOptions(change , ActionBar.DISPLAY_SHOW_TITLE);
-    }
 
     public void onMovie(View view)
     {
-        if (NetUtils.isNetworkAvailable(this))
-        {
-            showShortToast("Network Is Available");
-        }
-        else
-        {
-            showShortToast("Network Is Not Available");
-        }
+        startActivityNoArguements(MovieActivity.class);
     }
 
     public void onKTV(View view)
     {
-        if (NetUtils.isNetworkConnected(this))
-        {
-            showShortToast("Network Is Connected");
-        }
-        else
-        {
-            showShortToast("Network Is Not Connected");
-        }
+        startActivityNoArguements(KtvActivity.class);
     }
 
     public void onBar(View view)
     {
-        if (LocationUtils.isGPSAvailable(this))
-        {
-            showShortToast("WIFI Is Available");
-        }
-        else
-        {
-            showShortToast("WIFI Is Not Available");
-        }
+        startActivityNoArguements(BarActivity.class);
     }
 
 
     public void onShow(View view)
     {
-
-
-
-
+         startActivityNoArguements(ShowActivity.class);
     }
 
 
@@ -177,68 +176,6 @@ public class MainActivity extends BaseActivity implements OnApiCompleteListener,
         return true;
     }
 
-
-    class SupportCitiesAdapter extends ArrayAdapter
-    {
-        private Context mContext;
-        private LayoutInflater mInflater;
-        private int mStringsId;
-
-
-
-        public SupportCitiesAdapter(Context context, int resource, int stringsId) {
-            super(context, resource, stringsId);
-            mContext = context;
-            mStringsId = stringsId;
-            if (null != mContext)
-                mInflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-            clear();
-            for (String s : getResources().getStringArray(mStringsId))
-            {
-                add(s);
-            }
-        }
-
-        @Override
-        public View getDropDownView(int position, View convertView, ViewGroup parent) {
-            return createDropDownViewFromRes(position, convertView, parent, R.layout.activity_main_action_bar_dropdown_item);
-        }
-
-
-
-        private View createDropDownViewFromRes(int _position, View _convertView, ViewGroup _parent, int resId)
-        {
-            ViewHolder holder;
-            if ( null == _convertView)
-            {
-                _convertView = mInflater.inflate(resId, _parent, false);
-                holder = new ViewHolder();
-                holder.tvCity = (TextView) _convertView.findViewById(R.id.activity_main_action_bar_dropdown_tv);
-                holder.ivIndicator = (ImageView) _convertView.findViewById(R.id.activity_main_action_bar_dropdown_iv);
-                _convertView.setTag(holder);
-            }
-            else
-            {
-                holder = (ViewHolder) _convertView.getTag();
-            }
-
-            int selectIndex = getActionBar().getSelectedNavigationIndex();
-
-            holder.tvCity.setText(getItem(_position).toString());
-            holder.ivIndicator.setBackgroundResource(selectIndex == _position ? R.drawable.shape_circle_blue : Color.TRANSPARENT);
-
-            return _convertView;
-        }
-
-
-
-    }
-
-    static class ViewHolder
-    {
-        ImageView ivIndicator;
-        TextView tvCity;
-    }
 
     static int backTappedCount = 0;
     @Override
@@ -291,6 +228,10 @@ public class MainActivity extends BaseActivity implements OnApiCompleteListener,
             if (isContainCity)
             {
                 getActionBar().setSelectedNavigationItem(navigationItemPos);
+            }
+            else
+            {
+                showShortToast(R.string.toast_choose_a_city_which_was_supported);
             }
 
         }

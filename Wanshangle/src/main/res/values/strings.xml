@@ -10,37 +10,51 @@
     <string name="activity_main_movie">Movies</string>
     <string name="activity_main_ktv">KTV</string>
     <string name="activity_main_show">Show</string>
-
     <string name="title_activity_ciname_managment">CinameManagment</string>
     <string name="title_activity_ktvs_managment">KTVsManagment</string>
-
     <string name="action_relocate">Locate</string>
     <string name="title_activity_feed_back">FeedBackActivity</string>
 
-
-
-
-    <!--PreferencesActivity -->
+    <!-- PreferencesActivity -->
     <string name="pref_order_switch">OrderSaved</string>
     <string name="pref_order_switch_key">pref_save_order</string>
     <string name="pref_empty_cache_key">pref_empty_cache_value</string>
     <string name="pref_share_key">pref_share_value</string>
     <string name="pref_feedback_key">pref_feedback_value</string>
     <string name="pref_check_for_updates_key">pref_check_for_updates_value</string>
-
     <string name="activity_feedback_hint">It is my pleasure to listen to your advise.</string>
     <string name="pref_favorites_managment">FavoritesManagment</string>
     <string name="pref_ktvs_managment">KTV Managment</string>
     <string name="pref_cinemas_managment">Cinema Managment</string>
     <string name="pref_order_config">Pref_order</string>
     <string name="pref_version_config">Versions</string>
-
     <string name="pref_share">ShareWithFriends</string>
     <string name="pref_empty_cache">Empty Cache</string>
     <string name="pref_check_for_updates">Check For Updates</string>
     <string name="pref_feedback">Feedback</string>
     <string name="action_send">Send</string>
-    <!--PreferencesActivity -->
+    <!-- PreferencesActivity -->
 
+    <string name="title_section_nearby">Nearby</string>
+    <string name="title_section_favorites">Favroites</string>
+    <string name="title_section_all">All</string>
+    <string name="title_activity_common">CommonActivity</string>
+    <string name="title_activity_ktvs">KtvsActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_bar">BarActivity</string>
+    <string name="title_activity_show">ShowActivity</string>
+    <string name="toast_choose_a_city_which_was_supported">Choose a city witch was supported</string>
+    <string name="title_activity_movie">MovieActivity</string>
+    <string name="movie_action_segment_search">Search</string>
+    <string name="movie_action_segment_list">List</string>
+    <string name="fragment_movie_search_more">More</string>
+    <string name="fragment_movie_search_movies">Movies:</string>
+    <string name="fragment_movie_search_cinemas">Cinemas:</string>
+    <string name="fragment_movie_search_favorites">Favorites</string>
+    <string name="fragment_movie_search_nearby">Nearby</string>
+    <string name="fragment_movie_search_choose">Cinemas</string>
+    <string name="fragment_movie_search_search">Search</string>
 
 </resources>

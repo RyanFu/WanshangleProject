@@ -26,5 +26,16 @@
     <string name="action_send">发送</string>
     <!--PreferencesActivity -->
 
+    <string name="title_section_nearby">附近</string>
+    <string name="title_section_favorites">常去</string>
+    <string name="title_section_all">全部</string>
+
+    <string name="movie_action_segment_search">搜索</string>
+    <string name="movie_action_segment_list">列表</string>
+    <string name="fragment_movie_search_favorites">Favorites</string>
+    <string name="fragment_movie_search_nearby">Nearby</string>
+    <string name="fragment_movie_search_choose">Cinemas</string>
+    <string name="fragment_movie_search_search">Search</string>
+
 
 </resources>

@@ -29,14 +29,17 @@ public class DebugUtils {
         switch (pLevel)
         {
             case APPDEV:
+                LogUtils.isDebug = true;
                 enableStrickMode();
 
                 break;
             case APPQA:
+                LogUtils.isDebug = true;
                 enableStrickMode();
 
                 break;
             case APPPROD:
+                LogUtils.isDebug = false;
 //                enableStrickMode();
 
                 break;

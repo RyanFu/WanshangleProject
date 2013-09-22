@@ -72,13 +72,29 @@
         </service>
         <!-- BD Location Module need declare this Service -->
         <activity
-            android:name=".ui.preferences.FeedBackActivity"
+            android:name="com.wanshangle.ui.preferences.FeedBackActivity"
             android:label="@string/title_activity_feed_back" >
             <intent-filter>
                 <action android:name="com.wanshangle.ui.preferences.Pref_Feedback" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.wanshangle.ui.ktv.KtvActivity"
+            android:label="@string/title_activity_ktvs" >
+        </activity>
+        <activity
+            android:name="com.wanshangle.ui.bar.BarActivity"
+            android:label="@string/title_activity_bar" >
+        </activity>
+        <activity
+            android:name="com.wanshangle.ui.show.ShowActivity"
+            android:label="@string/title_activity_show" >
+        </activity>
+        <activity
+            android:name="com.wanshangle.ui.movie.MovieActivity"
+            android:label="@string/title_activity_movie" >
         </activity>
     </application>
 

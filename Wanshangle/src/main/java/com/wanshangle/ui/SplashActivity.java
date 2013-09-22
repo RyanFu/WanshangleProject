@@ -55,14 +55,14 @@ public class SplashActivity extends BaseActivity implements BDLocationListener{
 
     private void setLocationOption()
     {
-        LocationClientOption mOption = new LocationClientOption();
-        mOption.setOpenGps(false);
-        mOption.disableCache(true);
-        mOption.setPriority(LocationClientOption.NetWorkFirst);
-        mOption.setAddrType("all");
-        mOption.setCoorType("bd09ll");
-        mOption.setTimeOut(3000);
-        mLocClient.setLocOption(mOption);
+//        LocationClientOption mOption = new LocationClientOption();
+//        mOption.setOpenGps(false);
+//        mOption.disableCache(true);
+//        mOption.setPriority(LocationClientOption.NetWorkFirst);
+//        mOption.setAddrType("all");
+//        mOption.setCoorType("bd09ll");
+//        mOption.setTimeOut(3000);
+//        mLocClient.setLocOption(mOption);
         mLocClient.registerLocationListener(this);
         if (mLocClient.isStarted())
             mLocClient.requestLocation();
@@ -110,19 +110,29 @@ public class SplashActivity extends BaseActivity implements BDLocationListener{
 
     private void launchMain()
     {
-        Log.e(TAG, Build.VERSION.CODENAME);
-        Log.e(TAG, Build.VERSION.INCREMENTAL);
+
+        //
         Log.e(TAG, Build.VERSION.RELEASE);
         Log.e(TAG, Build.VERSION.SDK_INT + "");
-        Log.e(TAG, Build.BOARD);
         Log.e(TAG, Build.BRAND);
-        Log.e(TAG, Build.DEVICE);
-        Log.e(TAG, Build.DISPLAY);
-        Log.e(TAG, Build.ID);
-        Log.e(TAG, Build.PRODUCT);
         Log.e(TAG, Build.MODEL);
+
+
+
+
         startActivity(new Intent(SplashActivity.this, MainActivity.class));
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // When this activity is destroyed, unregister the BDLocationlistener
+        mLocClient.stop();
+        mLocClient.unRegisterLocationListener(this);
+        //
+        mLocClient = null;
+
     }
 }
